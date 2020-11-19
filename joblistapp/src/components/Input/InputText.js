@@ -1,26 +1,35 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 // import {addJob} from '../../action'
+import propTypes from 'prop-types'
 
-export default function InputText({ mode }) {
+export default function InputText({ nameInput, placeholder, className }) {
 
-    const [value, setValue] = useState({
 
-    })
     const dispatch = useDispatch()
+    const { inputValue } = useSelector(state => state.jobLists)
 
-    // const handleChange = (e) => {
+    const handleChange = (e) => {
 
-    //     if (mode === "search") dispatch({ type: "SEARCH", e })
-    // }
+        if (nameInput === "search") dispatch({ type: "SEARCH", target: e.target })
+    }
 
     return (
-        <>
-            <input
-                type={type}
-                value={value}
-                onChange={handleChange}
-            />
-        </>
+        <input
+            type="text"
+            name={nameInput}
+            value={inputValue[nameInput]}
+            onChange={handleChange}
+            placeholder={placeholder}
+            className={["input", className].join(" ")}
+            autoComplete="off"
+        />
+
     )
+}
+
+InputText.propTypes = {
+    nameInput: propTypes.string,
+    placeholder: propTypes.string,
+    className: propTypes.string,
 }

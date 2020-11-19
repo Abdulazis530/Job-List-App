@@ -1,12 +1,13 @@
-import './App.scss';
-import Nav from './components/Nav';
+import './assets/styles/style.scss';
+import Header from './components/Header';
+import SearchBox from './components/SearchBox';
 
 function App() {
   return (
     <>
-      <header>
-        <Nav />
-      </header>
+      <Header />
+      <SearchBox />
+
     </>
   );
 }
