@@ -2,12 +2,24 @@
 
 $primarry:#0B66C2;
 $gray:#F3F2EF;
-
+$red:#E33F20;
 
 @mixin flexCenter {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@mixin btnAction($color) {
+    background-color: $color;
+    @include flexCenter;
+    display: inline-flex;
+    margin: 0 15px;
+
+    &:hover {
+        transform: scale(.95);
+        background-color: darken($color, 10%);
+    }
 }
 
 body {
@@ -112,17 +124,17 @@ body {
 //section joblist
 
 .joblist__section {
-    @include flexCenter;
-    flex-direction: column;
     width: 100%;
-    height: 500px;
+
+    margin-top: 50px;
     padding: 0px 100px;
 }
 
 .card {
-    background: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    height: 400px;
     background: white;
     z-index: 2;
     box-shadow: 0px 1px 2px 2px rgba($color: #000000, $alpha: .2);
@@ -130,7 +142,12 @@ body {
     &__header {
         @include flexCenter;
         border-bottom: 1px solid rgba($color: #000000, $alpha: .2);
+        width: 100%;
+    }
 
+    &__body {
+        padding: 30px 50px;
+        width: 100%;
     }
 
     .status {
@@ -153,5 +170,66 @@ body {
             }
 
         }
+    }
+}
+
+
+table {
+    border-collapse: collapse;
+
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    padding: 8px;
+}
+
+
+tr:nth-child(odd) {
+    background-color: $gray;
+}
+
+
+.table__action {
+    width: 260px;
+
+}
+
+.btn {
+    padding: 8px 10px;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+
+
+    &:hover {
+        transform: scale(.95);
+    }
+
+    &__delete {
+        @include btnAction($red)
+    }
+
+    &__edit {
+        @include btnAction(green)
+    }
+
+    img {
+        color: white;
+    }
+
+    span {
+        margin-left: 5px;
+        color: white;
+        font-size: 1rem;
+        font-family: "Poppins", sans-serif;
+
     }
 }
