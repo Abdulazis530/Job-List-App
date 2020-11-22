@@ -1,6 +1,9 @@
 import React from 'react'
 import trashIcon from '../assets/icons/trash.svg'
 import editIcon from '../assets/icons/edit.svg'
+import Pagination from './Pagination'
+import Status from './Status'
+import Button from './Button'
 const jobs = [1, 2, 3, 4, 5
 ]
 
@@ -9,17 +12,7 @@ export default function Card() {
         <section className="joblist__section">
             <div className="card">
                 <div className="card__header">
-                    <ul className="status">
-                        <li className="status__item ">
-                            <p>All</p>
-                        </li>
-                        <li className="status__item active">
-                            <p>Interview</p>
-                        </li>
-                        <li className="status__item">
-                            <p>Rejected</p>
-                        </li>
-                    </ul>
+                    <Status />
                 </div>
                 <div className="card__body">
                     <table>
@@ -28,6 +21,7 @@ export default function Card() {
                             <th>Company</th>
                             <th>Position</th>
                             <th>Status</th>
+                            <th>Date</th>
                             <th>Action</th>
                         </tr>
 
@@ -38,16 +32,18 @@ export default function Card() {
                                 <td>Alfreds Futterkiste</td>
                                 <td>Maria Anders</td>
                                 <td>Germany</td>
+                                <td>28-10-2020</td>
                                 <td className="table__action">
-                                    <button className="btn btn__delete">
-                                        <img src={trashIcon} alt="trash icon" />
+                                    <Button className="btn__delete">
+                                        <img src={trashIcon} alt="trash icon" width="15px" height="15px" />
                                         <span> Delete</span>
-                                    </button>
+                                    </Button>
 
-                                    <button className="btn btn__edit">
-                                        <img src={editIcon} alt="edit icon" />
+                                    <Button className="btn__edit">
+                                        <img src={editIcon} alt="edit icon" width="15px" height="15px" />
                                         <span> Edit</span>
-                                    </button>
+                                    </Button>
+
                                 </td>
 
                             </tr>
@@ -57,6 +53,13 @@ export default function Card() {
 
                     </table>
                 </div>
+                <div className="card__footer">
+                    <Pagination />
+                    <Button className="btn__primary">
+                        Add Job
+                    </Button>
+                </div>
+
             </div>
         </section>
     )
