@@ -1,0 +1,21 @@
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin btnAction($color) {
+    background-color: $color;
+    @include flexCenter;
+    display: inline-flex;
+    margin: 0 5px;
+    width: 100px;
+
+
+
+    &:hover {
+        transform: scale(.95);
+        background-color: darken($color, 10%);
+    }
+}

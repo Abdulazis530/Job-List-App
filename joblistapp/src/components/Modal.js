@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Input from './Input'
+import Form from './Form'
+import Input from './Form'
 
 
 
@@ -21,13 +22,7 @@ export default function Modal({ isOpen, onClose }) {
                 </button>
 
                 <div className="modal__body">
-                    <label>Company</label>
-                    <Input nameInput="company" placeholder="Add new company" className="modal__input" />
-                    <label>Position</label>
-                    <Input nameInput="position" placeholder="job Position" className="modal__input" />
-                    <label>Date</label>
-                    <Input nameInput="date" placeholder="date" className="modal__input" type="date" />
-
+                    <Form />
                 </div>
             </div>
 
