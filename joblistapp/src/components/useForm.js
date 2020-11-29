@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 
-export default function useForm(validate) {
+export default function useForm(validate, callback) {
     const [values, setValues] = useState({ company: "", position: "", date: "" })
     const [errorValues, setErrorvalues] = useState({})
     const [submit, setSubmit] = useState(false)
-    const dispatch = useDispatch()
+
     const handleChange = (e) => {
 
         const { name, value } = e.target
@@ -25,7 +24,7 @@ export default function useForm(validate) {
     useEffect(() => {
 
         if (!Object.keys(errorValues).length && submit) {
-            dispatch({ type: "ADD_DATA", values })
+            callback()
         }
     }, [errorValues])
 

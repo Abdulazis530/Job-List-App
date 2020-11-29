@@ -6,8 +6,11 @@ import useForm from './useForm'
 import validate from "../utils/validate"
 
 
-export default function Form() {
-    const { handleChange, handleSubmit, values, errorValues } = useForm(validate)
+export default function Form({ onClose }) {
+
+    const dispatch = useDispatch()
+    const submit = () => dispatch({ type: "ADD_DATA", values });
+    const { handleChange, handleSubmit, values, errorValues } = useForm(validate, submit)
 
 
     return (
@@ -52,6 +55,7 @@ export default function Form() {
                     value={values.date}
                     type="text"
                     onFocus={(e) => e.target.type = 'date'}
+
                 />{
                     errorValues.date && <p className="error-input">{errorValues.date}</p>
 

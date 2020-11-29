@@ -10,8 +10,6 @@ export default function Modal({ isOpen, onClose }) {
     if (!isOpen) return null
 
 
-
-
     return ReactDOM.createPortal(
         <>
             <div className="overlay"></div>
@@ -22,7 +20,7 @@ export default function Modal({ isOpen, onClose }) {
                 </button>
 
                 <div className="modal__body">
-                    <Form />
+                    <Form onClose={onClose} />
                 </div>
             </div>
 
