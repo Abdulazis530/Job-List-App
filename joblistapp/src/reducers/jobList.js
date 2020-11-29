@@ -16,7 +16,10 @@ const jobLists = (state = { inputValue, jobs: [], }, action) => {
                     [action.target.name]: action.target.value
                 }
             }
+        case "ADD_DATA":
+            console.log(action.values)
 
+            return state
         default:
             return state
     }

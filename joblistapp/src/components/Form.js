@@ -1,13 +1,13 @@
 import React from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
-// import {addJob} from '../../action'
+import { useDispatch } from 'react-redux'
+
 import propTypes from 'prop-types'
 import useForm from './useForm'
 import validate from "../utils/validate"
 
+
 export default function Form() {
-    const submit = () => console.log("Submitted Succesfully");
-    const { handleChange, handleSubmit, values, errorValues } = useForm(validate, submit)
+    const { handleChange, handleSubmit, values, errorValues } = useForm(validate)
 
 
     return (
@@ -52,7 +52,6 @@ export default function Form() {
                     value={values.date}
                     type="text"
                     onFocus={(e) => e.target.type = 'date'}
-
                 />{
                     errorValues.date && <p className="error-input">{errorValues.date}</p>
 

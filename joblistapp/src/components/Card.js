@@ -22,40 +22,44 @@ export default function Card() {
                     </div>
                     <div className="card__body">
                         <table>
-                            <tr>
-                                <th>No</th>
-                                <th>Company</th>
-                                <th>Position</th>
-                                <th>Status</th>
-                                <th>Date</th>
-                                <th>Action</th>
-                            </tr>
+                            <thead>
 
-                            {jobs.map((e, index) =>
-
-                                <tr key={`job-${index + 1}`}>
-                                    <td>{index + 1}</td>
-                                    <td>Alfreds Futterkiste</td>
-                                    <td>Maria Anders</td>
-                                    <td>Germany</td>
-                                    <td>28-10-2020</td>
-                                    <td className="table__action">
-                                        <Button className="btn__delete">
-                                            <img src={trashIcon} alt="trash icon" width="15px" height="15px" />
-                                            <span> Delete</span>
-                                        </Button>
-
-                                        <Button className="btn__edit">
-                                            <img src={editIcon} alt="edit icon" width="15px" height="15px" />
-                                            <span> Edit</span>
-                                        </Button>
-
-                                    </td>
-
+                                <tr>
+                                    <th>No</th>
+                                    <th>Company</th>
+                                    <th>Position</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
                                 </tr>
 
+                            </thead>
+                            <tbody>
 
-                            )}
+                                {jobs.map((e, index) =>
+
+                                    <tr key={`job-${index + 1}`}>
+                                        <td>{index + 1}</td>
+                                        <td>Alfreds Futterkiste</td>
+                                        <td>Maria Anders</td>
+                                        <td>Germany</td>
+                                        <td>28-10-2020</td>
+                                        <td className="table__action">
+                                            <Button className="btn__delete">
+                                                <img src={trashIcon} alt="trash icon" width="15px" height="15px" />
+                                                <span> Delete</span>
+                                            </Button>
+
+                                            <Button className="btn__edit">
+                                                <img src={editIcon} alt="edit icon" width="15px" height="15px" />
+                                                <span> Edit</span>
+                                            </Button>
+
+                                        </td>
+
+                                    </tr>
+                                )}
+                            </tbody>
 
                         </table>
                     </div>
