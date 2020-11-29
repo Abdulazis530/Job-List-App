@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Header() {
+    const [isTabOpen, setIsTabopen] = useState(false)
     return (
         <header>
-            <nav className="nav">
-                <h1 className="nav__title">
+            <nav className="navbar">
+                <h1 className="navbar-brand">
                     Joblist.
-            </h1>
-                <ul className="nav__tabs">
-                    <li className="nav__item"><a href="/#">About</a></li>
-                    <li className="nav__item"> <a href="/#">Home</a></li>
-                </ul>
+                </h1>
+                <i className={`fas ${isTabOpen ? "fa-times" : "fa-bars"} fa-2x`} onClick={() => { setIsTabopen(!isTabOpen) }} />
+
+                <div className={`navbar-links ${isTabOpen ? "active" : ""}`}>
+                    <ul>
+                        <li><a href="/#">About</a></li>
+                        <li> <a href="/#">Home</a></li>
+                    </ul>
+                </div>
             </nav>
         </header>
 

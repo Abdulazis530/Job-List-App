@@ -1,9 +1,9 @@
-
 @import "config/fonts.scss";
 @import "config/variable.scss";
 @import "config/reset.scss";
 @import "./Components/Form.scss";
 @import "./config/mixins.scss";
+@import "./Components/Navbar.scss";
 //Header
 // header {}
 
@@ -15,10 +15,7 @@
     background: $gray;
     position: relative;
 
-    &__title {
-        font-size: 2rem;
-        color: $primary;
-    }
+
 
     &__tabs {
         display: flex;
@@ -27,16 +24,6 @@
         width: 100%;
         max-width: 200px;
 
-        a {
-            font-size: 1.2rem;
-            color: black;
-            font-weight: 500;
-
-
-            &:hover {
-                color: white;
-            }
-        }
 
     }
 }
@@ -65,8 +52,9 @@
     border: none;
     border-bottom: 3px solid #dbdbdb;
 
-
-
+    &:focus {
+        border-bottom: 3px solid black;
+    }
 }
 
 .btn__add {
@@ -342,4 +330,3 @@ tr:nth-child(odd) {
 
 
 }
-
