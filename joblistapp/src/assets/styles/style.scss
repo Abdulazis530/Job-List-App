@@ -4,31 +4,7 @@
 @import "./Components/Form.scss";
 @import "./config/mixins.scss";
 @import "./Components/Navbar.scss";
-//Header
-// header {}
 
-.nav {
-    display: flex;
-    padding: 5px 100px;
-    align-items: center;
-    justify-content: space-between;
-    background: $gray;
-    position: relative;
-
-
-
-    &__tabs {
-        display: flex;
-        justify-content: space-evenly;
-
-        width: 100%;
-        max-width: 200px;
-
-
-    }
-}
-
-//form
 
 //search box
 
