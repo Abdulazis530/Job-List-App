@@ -5,7 +5,7 @@ const inputValue = {
     position: ""
 }
 
-const jobLists = (state = { inputValue, jobs: [], }, action) => {
+const jobLists = (state = { inputValue, jobs: [], loading: false }, action) => {
     switch (action.type) {
 
         case "SEARCH":
@@ -16,10 +16,14 @@ const jobLists = (state = { inputValue, jobs: [], }, action) => {
                     [action.target.name]: action.target.value
                 }
             }
-        case "ADD_DATA":
-            console.log(action.values)
+        case "ADD_JOB_SUCCESS":
+            return {
+                ...state,
+                jobs: [...state.jobs, action.values],
+                loading: !state.loading
+            }
 
-            return state
+
         default:
             return state
     }

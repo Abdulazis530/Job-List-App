@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-
+import { addJob } from '../actions'
 import propTypes from 'prop-types'
 import useForm from './useForm'
 import validate from "../utils/validate"
@@ -9,7 +9,9 @@ import validate from "../utils/validate"
 export default function Form({ onClose }) {
 
     const dispatch = useDispatch()
-    const submit = () => dispatch({ type: "ADD_DATA", values });
+    const submit = () => {
+        addJob(values, onClose)
+    };
     const { handleChange, handleSubmit, values, errorValues } = useForm(validate, submit)
 
 
