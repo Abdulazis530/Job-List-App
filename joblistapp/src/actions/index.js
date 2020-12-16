@@ -1,5 +1,7 @@
 import Swal from 'sweetalert2'
 
+const storageData = JSON.stringify(localStorage.getItem("jobs")) || []
+
 const setLoading = () => ({
     type: "LOADING_TRUE"
 })
