@@ -1,8 +1,4 @@
-import Swal from 'sweetalert2'
 
-const setLoading = () => ({
-    type: "LOADING_TRUE"
-})
 
 const addJobSucces = values => (
     {
@@ -14,17 +10,6 @@ export const addJob = (values, cb) => {
 
     return dispatch => {
         console.log('in action', values)
-        dispatch(setLoading())
-
-        setTimeout(() => {
-            cb()
-            Swal.fire({
-                icon: 'success',
-                title: 'Your job has been added',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }, 1500)
         dispatch(addJobSucces(values))
 
     }

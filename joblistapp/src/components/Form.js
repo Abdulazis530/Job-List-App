@@ -1,16 +1,25 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState } from 'react'
 import { addJob } from '../actions'
 import propTypes from 'prop-types'
-import useForm from './useForm'
+import useForm from '../hooks/useForm'
 import validate from "../utils/validate"
+import Swal from 'sweetalert2'
 
 
 export default function Form({ onClose }) {
-
-    const dispatch = useDispatch()
+    const [loading, setLoading] = useState(false)
     const submit = () => {
-        addJob(values, onClose)
+        setLoading(true)
+        setTimeout(() => {
+            addJob(values, onClose)
+            setLoading(false)
+            onClose()
+            Swal.fire({
+                icon: 'success',
+                title: 'Your job has been added',
+                showConfirmButton: false,
+            })
+        }, 1500)
     };
     const { handleChange, handleSubmit, values, errorValues } = useForm(validate, submit)
 
