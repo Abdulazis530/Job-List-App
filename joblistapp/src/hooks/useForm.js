@@ -6,12 +6,13 @@ export default function useForm(validate, callback) {
     const [submit, setSubmit] = useState(false)
 
     const handleChange = (e) => {
-
         const { name, value } = e.target
         setValues({
             ...values,
             [name]: value
         })
+
+        console.log("VALUES:", values)
     }
 
 
