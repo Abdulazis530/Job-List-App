@@ -73,7 +73,7 @@ export default function Form({ onClose }) {
                 }
             </div>
 
-            <button className="btn btn__primary" style={{ alignSelf: "flex-end" }} type="submit">
+            <button className={`btn btn__primary ${loading && "loading"}`} style={{ alignSelf: "flex-end" }} type="submit">
                 Save
             </button>
         </form>
