@@ -1,7 +1,6 @@
 
 import { v4 as uuidv4 } from 'uuid';
 
-const storageData = JSON.parse(localStorage.getItem("jobs")) || []
 
 const setLoading = (totalPage, offset, status) => ({
     type: "SET_LOADING",
@@ -18,16 +17,20 @@ const loadJobSuccess = (jobs, page) => ({
 
 export const loadJobs = (page, status = "ALL") => {
     return dispatch => {
+        const storageData = JSON.parse(localStorage.getItem("jobs")) || []
+
         const LIMIT = 5
         const offset = (page - 1) * LIMIT
         const totalPage = Math.ceil(storageData.length / LIMIT)
+
         dispatch(setLoading(totalPage, offset, status))
         setTimeout(() => {
             let jobs
             if (status !== "ALL") {
-                jobs = storageData.filter(job => job.status === status).slice(offset, LIMIT)
+                jobs = storageData.filter(job => job.status === status).splice(offset, LIMIT)
             } else {
-                jobs = storageData.slice(offset, LIMIT)
+                jobs = storageData.splice(offset, LIMIT)
+
             }
             dispatch(loadJobSuccess(jobs, page))
         }, 500)
@@ -45,6 +48,8 @@ const addJobSuccess = (job) => ({
 export const addJob = (job, page) => {
 
     return dispatch => {
+        const storageData = JSON.parse(localStorage.getItem("jobs")) || []
+
         job.status = "APPLIED"
         job.id = uuidv4()
         storageData.push(job)

@@ -2,15 +2,16 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import JobItem from './JobItem'
 import { loadJobs } from '../actions'
-
+import Spinner from "./Spinner"
 export default function JobList() {
-    const { jobs, page, offset, status } = useSelector(state => state.jobLists)
+    const { jobs, page, offset, status, loading } = useSelector(state => state.jobLists)
     const dispatch = useDispatch()
 
     useEffect(() => {
+        console.log("trigered")
         dispatch(loadJobs(page, status))
     }, [page])
-
+    if (loading) return <Spinner />
     return (
         <table>
             <thead>
@@ -24,17 +25,19 @@ export default function JobList() {
                 </tr>
 
             </thead>
+
             <tbody>
-                {jobs.map((job, index) => (
-                    <JobItem
-                        key={job.id}
-                        num={offset + index + 1}
-                        company={job.company}
-                        position={job.position}
-                        status={job.status}
-                        date={job.date}
-                    />
-                ))
+                {
+                    jobs.map((job, index) => (
+                        <JobItem
+                            key={job.id}
+                            num={offset + index + 1}
+                            company={job.company}
+                            position={job.position}
+                            status={job.status}
+                            date={job.date}
+                        />
+                    ))
                 }
             </tbody>
         </table>

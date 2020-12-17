@@ -4,14 +4,15 @@ import Button from './Button'
 import Modal from './Modal'
 
 
+
+
 export default function Card({ header, body }) {
     const [isOpen, setIsOpen] = useState(false)
-
     const toggleModal = () => setIsOpen(!isOpen)
 
     return (
         <>
-            <section className="joblist__section">d
+            <section className="joblist__section">
                 <div className="card">
                     <div className="card__header">
                         {header}
