@@ -23,6 +23,7 @@ export default function Form({ onClose }) {
                 icon: 'success',
                 title: 'Your job has been added',
                 showConfirmButton: false,
+                timer: 1000
             })
         }, 1500)
     };

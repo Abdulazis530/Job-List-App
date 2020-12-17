@@ -1,5 +1,6 @@
 
 import { v4 as uuidv4 } from 'uuid';
+import Swal from 'sweetalert2'
 
 
 const setLoading = (offset, status) => ({
@@ -66,12 +67,18 @@ const deleteJobSucces = (id) => ({
     id
 })
 
-export const deleteJob = (id) => {
+export const deleteJob = (id, page, status, totalJobInPage) => {
     return dispatch => {
         const storageData = JSON.parse(localStorage.getItem("jobs")) || []
         const deletedStorageData = storageData.filter(job => job.id !== id)
         localStorage.setItem("jobs", JSON.stringify(deletedStorageData))
         dispatch(deleteJobSucces(id))
+        if (page > 1 && totalJobInPage === 1) dispatch(loadJobs(page, status))
+        Swal.fire({
+            icon: 'success',
+            title: 'Todo has been deleted',
+            showConfirmationButton: false,
+        })
     }
 
 }

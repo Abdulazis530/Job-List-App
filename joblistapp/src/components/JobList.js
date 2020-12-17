@@ -9,6 +9,7 @@ export default function JobList() {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        console.log("PAGE:", page)
         dispatch(loadJobs(page, status))
     }, [page])
     if (loading) return <Spinner />
@@ -34,7 +35,7 @@ export default function JobList() {
                             num={offset + index + 1}
                             company={job.company}
                             position={job.position}
-                            status={job.status}
+                            statusJob={job.status}
                             date={job.date}
                             id={job.id}
                         />
