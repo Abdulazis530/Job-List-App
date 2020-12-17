@@ -28,6 +28,9 @@ export default function JobItem(props) {
             }
         })
     }
+    const handleEdit = (id) => {
+        dispatch({ type: "TOGGLE_EDIT", id })
+    }
     return (
         <tr>
             <td>{num}</td>
@@ -41,7 +44,7 @@ export default function JobItem(props) {
                     <span> Delete</span>
                 </Button>
 
-                <Button className="btn__edit">
+                <Button className="btn__edit" onClick={() => { handleEdit(id) }}>
                     <img src={editIcon} alt="edit icon" width="15px" height="15px" />
                     <span> Edit</span>
                 </Button>

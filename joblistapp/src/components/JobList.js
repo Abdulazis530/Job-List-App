@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import JobItem from './JobItem'
+import EditForm from './EditForm'
 import { loadJobs } from '../actions'
 import Spinner from "./Spinner"
 export default function JobList() {
@@ -29,15 +30,26 @@ export default function JobList() {
             <tbody>
                 {
                     jobs.map((job, index) => (
-                        <JobItem
-                            key={job.id}
-                            num={offset + index + 1}
-                            company={job.company}
-                            position={job.position}
-                            statusJob={job.status}
-                            date={job.date}
-                            id={job.id}
-                        />
+                        job.isEdit ?
+                            <EditForm
+                                key={job.id}
+                                num={offset + index + 1}
+                                company={job.company}
+                                position={job.position}
+                                statusJob={job.status}
+                                date={job.date}
+                                id={job.id}
+                            />
+                            :
+                            <JobItem
+                                key={job.id}
+                                num={offset + index + 1}
+                                company={job.company}
+                                position={job.position}
+                                statusJob={job.status}
+                                date={job.date}
+                                id={job.id}
+                            />
                     ))
                 }
             </tbody>

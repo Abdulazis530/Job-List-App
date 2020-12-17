@@ -11,7 +11,7 @@ export default function Form({ onClose }) {
     const [loading, setLoading] = useState(false)
     const { page, jobs, status } = useSelector(state => state.jobLists)
     const dispatch = useDispatch()
-
+    const objValue = { company: "", position: "", date: "" }
     const submit = () => {
         setLoading(true)
         setTimeout(() => {
@@ -26,7 +26,7 @@ export default function Form({ onClose }) {
             })
         }, 1500)
     };
-    const { handleChange, handleSubmit, values, errorValues } = useForm(validate, submit)
+    const { handleChange, handleSubmit, values, errorValues } = useForm(validate, submit, objValue)
 
 
     return (

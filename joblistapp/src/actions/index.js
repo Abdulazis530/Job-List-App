@@ -19,7 +19,9 @@ const loadJobSuccess = (jobs, page, totalPage) => ({
 export const loadJobs = (page, status = "ALL") => {
     return dispatch => {
         const storageData = JSON.parse(localStorage.getItem("jobs")) || []
-
+        storageData.forEach(job => {
+            job.isEdit = false
+        })
         const LIMIT = 5
         const offset = (page - 1) * LIMIT
 
@@ -57,6 +59,7 @@ export const addJob = (job, page, status, totalJobInPage) => {
         storageData.push(job)
         localStorage.setItem("jobs", JSON.stringify(storageData))
         if (totalJobInPage === 5) return dispatch(loadJobs(page + 1, status))
+        job.isEdit = false
         dispatch(addJobSuccess(job))
     }
 
@@ -76,9 +79,35 @@ export const deleteJob = (id, page, status, totalJobInPage) => {
         if (page > 1 && totalJobInPage === 1) dispatch(loadJobs(page - 1, status))
         Swal.fire({
             icon: 'success',
-            title: 'Todo has been deleted',
+            title: 'Job has been deleted',
             showConfirmationButton: false,
         })
     }
 
+}
+
+
+const editJobSuccess = (id, values) => ({
+    type: "EDIT_JOB_SUCCESS",
+    id,
+    values
+})
+
+export const editJob = (id, values) => {
+    return dispatch => {
+        const storageData = JSON.parse(localStorage.getItem("jobs")) || []
+        storageData.forEach(job => {
+            if (job.id === id) {
+                job = { ...values }
+            }
+        })
+        localStorage.setItem("jobs", JSON.stringify(storageData))
+
+        dispatch(editJobSuccess(id, values))
+        Swal.fire({
+            icon: 'success',
+            title: 'Job has been updated!',
+            showConfirmationButton: false,
+        })
+    }
 }

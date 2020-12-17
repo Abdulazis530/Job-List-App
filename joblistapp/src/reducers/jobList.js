@@ -27,8 +27,26 @@ const jobLists = (state = { jobs: [], loading: false, page: 1, offset: 0, status
                 ...state,
                 jobs: state.jobs.filter(job => job.id !== action.id),
             }
-
-
+        case "TOGGLE_EDIT":
+            return {
+                ...state,
+                jobs: state.jobs.map(job => {
+                    if (job.id === action.id) {
+                        job.isEdit = true
+                    }
+                    return job
+                })
+            }
+        case "EDIT_JOB_SUCCESS":
+            return {
+                ...state,
+                jobs: state.jobs.map(job => {
+                    if (job.id === action.id) {
+                        job = { ...action.values }
+                    }
+                    return job
+                })
+            }
         default:
             return state
     }

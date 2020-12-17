@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
-export default function useForm(validate, callback) {
-    const [values, setValues] = useState({ company: "", position: "", date: "" })
+export default function useForm(validate, callback, objValue) {
+    const [values, setValues] = useState(objValue)
     const [errorValues, setErrorvalues] = useState({})
     const [submit, setSubmit] = useState(false)
 
