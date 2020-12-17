@@ -9,7 +9,6 @@ export default function JobList() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log("PAGE:", page)
         dispatch(loadJobs(page, status))
     }, [page])
     if (loading) return <Spinner />

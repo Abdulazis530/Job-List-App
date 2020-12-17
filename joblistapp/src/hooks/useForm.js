@@ -11,8 +11,6 @@ export default function useForm(validate, callback) {
             ...values,
             [name]: value
         })
-
-        console.log("VALUES:", values)
     }
 
 
