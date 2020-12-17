@@ -9,7 +9,7 @@ import { deleteJob } from '../actions'
 
 export default function JobItem(props) {
     const dispatch = useDispatch()
-    const { page, status } = useSelector(state => state.jobLists)
+    const { jobs, page, status } = useSelector(state => state.jobLists)
     const { num, company, position, date, statusJob, id } = props
 
     const handleDelete = (id) => {
@@ -24,7 +24,7 @@ export default function JobItem(props) {
             cancelButtonText: 'No!',
         }).then(result => {
             if (result.value) {
-                dispatch(deleteJob(id, page, status))
+                dispatch(deleteJob(id, page, status, jobs.length))
             }
         })
     }
