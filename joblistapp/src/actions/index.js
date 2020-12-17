@@ -48,18 +48,18 @@ const addJobSuccess = (job) => ({
 
 })
 
-export const addJob = (job, page) => {
+export const addJob = (job, page, status, totalJobInPage) => {
 
     return dispatch => {
         const storageData = JSON.parse(localStorage.getItem("jobs")) || []
-
         job.status = "APPLIED"
         job.id = uuidv4()
         storageData.push(job)
         localStorage.setItem("jobs", JSON.stringify(storageData))
-        dispatch(addJobSuccess(job, page))
+        if (totalJobInPage === 5) return dispatch(loadJobs(page + 1, status))
+        dispatch(addJobSuccess(job))
     }
-    // const jobs = localStorage.getItem("Jobs")
+
 }
 
 const deleteJobSucces = (id) => ({
@@ -73,7 +73,7 @@ export const deleteJob = (id, page, status, totalJobInPage) => {
         const deletedStorageData = storageData.filter(job => job.id !== id)
         localStorage.setItem("jobs", JSON.stringify(deletedStorageData))
         dispatch(deleteJobSucces(id))
-        if (page > 1 && totalJobInPage === 1) dispatch(loadJobs(page, status))
+        if (page > 1 && totalJobInPage === 1) dispatch(loadJobs(page - 1, status))
         Swal.fire({
             icon: 'success',
             title: 'Todo has been deleted',

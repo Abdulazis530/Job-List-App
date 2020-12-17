@@ -20,13 +20,12 @@ const jobLists = (state = { jobs: [], loading: false, page: 1, offset: 0, status
         case "ADD_JOB_SUCCESS":
             return {
                 ...state,
-                jobs: state.jobs.length < 5 ? [...state.jobs, action.job] : state.jobs
+                jobs: [...state.jobs, action.job]
             }
         case "DELETE_ID_SUCCESS":
             return {
                 ...state,
                 jobs: state.jobs.filter(job => job.id !== action.id),
-                page: state.page > 1 && state.jobs.length === 1 ? state.page - 1 : state.page
             }
 
 

@@ -9,14 +9,13 @@ import Swal from 'sweetalert2'
 
 export default function Form({ onClose }) {
     const [loading, setLoading] = useState(false)
-    const { page, totalPage, jobs } = useSelector(state => state.jobLists)
+    const { page, jobs, status } = useSelector(state => state.jobLists)
     const dispatch = useDispatch()
 
     const submit = () => {
         setLoading(true)
         setTimeout(() => {
-            let currentPage = jobs.length > 5 ? totalPage : page
-            dispatch(addJob(values, currentPage))
+            dispatch(addJob(values, page, status, jobs.length))
             setLoading(false)
             onClose()
             Swal.fire({
