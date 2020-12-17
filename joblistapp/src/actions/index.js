@@ -2,16 +2,16 @@
 import { v4 as uuidv4 } from 'uuid';
 
 
-const setLoading = (totalPage, offset, status) => ({
+const setLoading = (offset, status) => ({
     type: "SET_LOADING",
-    totalPage,
     offset,
     status
 })
-const loadJobSuccess = (jobs, page) => ({
+const loadJobSuccess = (jobs, page, totalPage) => ({
     type: "LOAD_JOBS_SUCCESS",
     jobs,
-    page
+    page,
+    totalPage
 
 })
 
@@ -21,18 +21,20 @@ export const loadJobs = (page, status = "ALL") => {
 
         const LIMIT = 5
         const offset = (page - 1) * LIMIT
-        const totalPage = Math.ceil(storageData.length / LIMIT)
 
-        dispatch(setLoading(totalPage, offset, status))
+        dispatch(setLoading(offset, status))
         setTimeout(() => {
             let jobs
+            let totalPage
             if (status !== "ALL") {
-                jobs = storageData.filter(job => job.status === status).splice(offset, LIMIT)
+                let filteredData = storageData.filter(job => job.status === status)
+                totalPage = filteredData.length
+                jobs = filteredData.splice(offset, LIMIT)
             } else {
+                totalPage = Math.ceil(storageData.length / LIMIT)
                 jobs = storageData.splice(offset, LIMIT)
-
             }
-            dispatch(loadJobSuccess(jobs, page))
+            dispatch(loadJobSuccess(jobs, page, totalPage))
         }, 500)
 
     }

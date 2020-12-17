@@ -7,7 +7,6 @@ const jobLists = (state = { jobs: [], loading: false, page: 1, offset: 0, status
                 ...state,
                 loading: true,
                 offset: action.offset,
-                totalPage: action.totalPage,
                 status: action.status
             }
         case "LOAD_JOBS_SUCCESS":
@@ -16,6 +15,7 @@ const jobLists = (state = { jobs: [], loading: false, page: 1, offset: 0, status
                 jobs: action.jobs,
                 page: action.page,
                 loading: false,
+                totalPage: action.totalPage,
             }
         case "ADD_JOB_SUCCESS":
             return {
