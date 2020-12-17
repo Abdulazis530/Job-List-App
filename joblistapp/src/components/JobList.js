@@ -18,6 +18,7 @@ export default function JobList() {
                     <JobItem
                         key={job.id}
                         num={offset + index}
+                        company={job.company}
                         position={job.position}
                         status={job.status}
                         date={job.date}

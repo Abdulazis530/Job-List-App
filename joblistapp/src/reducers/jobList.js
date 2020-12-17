@@ -1,26 +1,20 @@
-const inputValue = {
-    company: "",
-    search: "",
-    status: "",
-    position: ""
-}
 
-const jobLists = (state = { inputValue, jobs: [], loading: false, page: 1 }, action) => {
+
+const jobLists = (state = { jobs: [], loading: false, page: 1, offset: 0 }, action) => {
     switch (action.type) {
-
-        case "SEARCH":
+        case "SET_LOADING":
             return {
                 ...state,
-                inputValue: {
-                    ...inputValue,
-                    [action.target.name]: action.target.value
-                }
+                loading: true,
+                offset: action.offset,
+                totalData: action.totalData
             }
-        case "ADD_JOB_SUCCESS":
+        case "LOAD_JOBS_SUCCESS":
             return {
                 ...state,
-                jobs: [...state.jobs, action.values],
-                loading: !state.loading
+                jobs: [...state.jobs, ...action.jobs],
+                loading: false,
+                page: action.page,
             }
 
 
