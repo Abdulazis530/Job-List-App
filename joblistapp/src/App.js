@@ -1,16 +1,11 @@
 import './assets/styles/style.scss';
-import Card from './components/Card';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import SearchBox from './components/SearchBox';
+import Home from './components/pages/Home';
+
 
 function App() {
   return (
     <>
-      <Header />
-      <SearchBox />
-      <Card />
-      <Footer />
+      <Home />
     </>
   );
 }

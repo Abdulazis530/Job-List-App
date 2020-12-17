@@ -4,20 +4,31 @@ import JobItem from './JobItem'
 import { loadJobs } from '../actions'
 
 export default function JobList() {
-    const { jobs, page, offset } = useSelector(state => state.jobLists)
+    const { jobs, page, offset, status } = useSelector(state => state.jobLists)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(loadJobs(page))
+        dispatch(loadJobs(page, status))
     }, [page])
 
     return (
         <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Company</th>
+                    <th>Position</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
             <tbody>
                 {jobs.map((job, index) => (
                     <JobItem
                         key={job.id}
-                        num={offset + index}
+                        num={offset + index + 1}
                         company={job.company}
                         position={job.position}
                         status={job.status}

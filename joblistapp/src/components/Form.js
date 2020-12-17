@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { addJob } from '../actions'
 import propTypes from 'prop-types'
 import useForm from '../hooks/useForm'
@@ -8,10 +9,13 @@ import Swal from 'sweetalert2'
 
 export default function Form({ onClose }) {
     const [loading, setLoading] = useState(false)
+    const { page, totalPage, jobs } = useSelector(state => state.state)
+    const dispatch = useDispatch()
+
     const submit = () => {
         setLoading(true)
         setTimeout(() => {
-            addJob(values)
+            dispatch(addJob(values, jobs.length > 5 ? totalPage : page))
             setLoading(false)
             onClose()
             Swal.fire({
