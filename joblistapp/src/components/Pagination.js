@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadJobs } from '../actions'
 
@@ -23,7 +23,7 @@ export default function Pagination() {
     }
     return (
         <ul className="pagination">
-            <li className="page-item">
+            <li className={`page-item ${page === 1 && "disabled"}`} onClick={() => handlePrev()}>
                 <div className="page-link" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </div>
@@ -40,7 +40,7 @@ export default function Pagination() {
                 ))
             }
 
-            <li className="page-item">
+            <li className={`page-item ${page === totalPage && "disabled"}`} onClick={() => handleNext()}>
                 <div className="page-link" href="/#" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </div>
