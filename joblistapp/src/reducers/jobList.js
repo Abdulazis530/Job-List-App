@@ -5,7 +5,7 @@ const inputValue = {
     position: ""
 }
 
-const jobLists = (state = { inputValue, jobs: [], loading: false }, action) => {
+const jobLists = (state = { inputValue, jobs: [], loading: false, page: 1 }, action) => {
     switch (action.type) {
 
         case "SEARCH":
