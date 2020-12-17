@@ -36,6 +36,7 @@ export default function JobList() {
                             position={job.position}
                             status={job.status}
                             date={job.date}
+                            id={job.id}
                         />
                     ))
                 }

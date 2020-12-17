@@ -60,3 +60,18 @@ export const addJob = (job, page) => {
     }
     // const jobs = localStorage.getItem("Jobs")
 }
+
+const deleteJobSucces = (id) => ({
+    type: "DELETE_ID_SUCCESS",
+    id
+})
+
+export const deleteJob = (id) => {
+    return dispatch => {
+        const storageData = JSON.parse(localStorage.getItem("jobs")) || []
+        const deletedStorageData = storageData.filter(job => job.id !== id)
+        localStorage.setItem("jobs", JSON.stringify(deletedStorageData))
+        dispatch(deleteJobSucces(id))
+    }
+
+}
