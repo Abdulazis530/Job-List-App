@@ -30,56 +30,50 @@ export default function EditForm(props) {
         })
 
     }
-    const { handleChange, handleSubmit, values, errorValues } = useForm(validate, submit, { position, company, date, statusJob })
+    const { handleChange, handleSubmit, values, errorValues } = useForm(validate, submit, { position, company, date, status: statusJob })
 
     return (
         <tr>
             <td>{num}</td>
             <td>
-                <div className="form-row">
-                    <label>Company</label>
+                <div className="form-row edit">
                     <input
                         name="company"
                         placeholder="Edit company"
-                        className={`input input-modal ${errorValues.company && "error"}`}
+                        className={`input input-edit ${errorValues.company && "error"}`}
                         value={values.company}
                     />
                 </div>
             </td>
             <td>
-                <div className="form-row">
-                    <label>Position</label>
+                <div className="form-row edit">
                     <input
                         name="positon"
                         placeholder="Edit position"
-                        className={`input input-modal ${errorValues.position && "error"}`}
+                        className={`input input-edit ${errorValues.position && "error"}`}
                         value={values.position}
                     />
                 </div>
             </td>
             <td>
-                <div className="form-row">
-                    <label>Status</label>
+                <div className="form-row edit">
                     <input
                         name="status"
                         placeholder="Edit status"
-                        className={`input input-modal ${errorValues.status && "error"}`}
+                        className={`input input-edit ${errorValues.status && "error"}`}
                         value={values.status}
                     />
                 </div>
 
             </td>
             <td>
-                <div className="form-row">
-                    <label>Date</label>
+                <div className="form-row edit">
                     <input
                         name="date"
-                        placeholder="mm/dd/yyyy"
-                        className={`input input-modal ${errorValues.date && "error"}`}
+                        className={`input input-edit ${errorValues.date && "error"}`}
                         onChange={handleChange}
                         value={values.date}
-                        type="text"
-                        onFocus={(e) => e.target.type = 'date'}
+                        type="date"
                     />
                 </div>
             </td>

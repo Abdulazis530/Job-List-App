@@ -9,8 +9,13 @@
         flex-direction: column;
         margin-bottom: 15px;
 
+        &.edit {
+            margin-top: 15px;
+        }
     }
+
 }
+
 
 .input {
     height: 40px;
@@ -43,6 +48,23 @@
             border: $red 1px solid;
         }
     }
+
+    &-edit {
+        outline: none;
+
+        &::placeholder {
+            font: inherit;
+        }
+
+        &:focus {
+            border: $primary 1px solid;
+        }
+
+        &.error {
+            border: $red 1px solid;
+        }
+    }
+
 }
 
 
