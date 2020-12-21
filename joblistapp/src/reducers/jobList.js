@@ -1,15 +1,23 @@
 
+import {
+    LOAD_JOBS,
+    LOAD_JOBS_SUCCESS,
+    ADD_JOB_SUCCESS,
+    DELETE_ID_SUCCESS,
+    EDIT_JOB_SUCCESS,
+    TOGGLE_EDIT
+} from '../constant'
 
 const jobLists = (state = { jobs: [], loading: false, page: 1, offset: 0, status: "ALL", totalPage: null }, action) => {
     switch (action.type) {
-        case "SET_LOADING":
+        case LOAD_JOBS:
             return {
                 ...state,
                 loading: true,
                 offset: action.offset,
                 status: action.status
             }
-        case "LOAD_JOBS_SUCCESS":
+        case LOAD_JOBS_SUCCESS:
             return {
                 ...state,
                 jobs: action.jobs,
@@ -17,17 +25,17 @@ const jobLists = (state = { jobs: [], loading: false, page: 1, offset: 0, status
                 loading: false,
                 totalPage: action.totalPage,
             }
-        case "ADD_JOB_SUCCESS":
+        case ADD_JOB_SUCCESS:
             return {
                 ...state,
                 jobs: [...state.jobs, action.job]
             }
-        case "DELETE_ID_SUCCESS":
+        case DELETE_ID_SUCCESS:
             return {
                 ...state,
                 jobs: state.jobs.filter(job => job.id !== action.id),
             }
-        case "TOGGLE_EDIT":
+        case TOGGLE_EDIT:
             return {
                 ...state,
                 jobs: state.jobs.map(job => {
@@ -37,7 +45,7 @@ const jobLists = (state = { jobs: [], loading: false, page: 1, offset: 0, status
                     return job
                 })
             }
-        case "EDIT_JOB_SUCCESS":
+        case EDIT_JOB_SUCCESS:
             return {
                 ...state,
                 jobs: state.jobs.map(job => {

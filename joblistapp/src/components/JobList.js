@@ -3,14 +3,14 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import JobItem from './JobItem'
 import EditForm from './EditForm'
-import { loadJobs } from '../actions'
+import { loadJobsRequest } from '../actions'
 import Spinner from "./Spinner"
 export default function JobList() {
     const { jobs, page, offset, status, loading } = useSelector(state => state.jobLists)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(loadJobs(page, status))
+        dispatch(loadJobsRequest(page, status))
     }, [page])
     if (loading) return <Spinner />
     return (

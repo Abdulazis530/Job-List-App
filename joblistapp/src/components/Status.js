@@ -1,13 +1,13 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadJobs } from '../actions'
+import { loadJobsRequest } from '../actions'
 
 export default function Status() {
     const dispatch = useDispatch()
     const { status, page } = useSelector(state => state.jobLists)
 
     const handleChangeStatus = (newStatus) => {
-        dispatch(loadJobs(page, newStatus))
+        dispatch(loadJobsRequest(page, newStatus))
     }
 
 

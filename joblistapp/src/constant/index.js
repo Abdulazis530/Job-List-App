@@ -1,0 +1,6 @@
+export const LOAD_JOBS = "LOAD_JOBS";
+export const LOAD_JOBS_SUCCESS = "LOAD_JOBS_SUCCESS";
+export const ADD_JOB_SUCCESS = "ADD_JOB_SUCCESS";
+export const DELETE_ID_SUCCESS = "DELETE_ID_SUCCESS"
+export const EDIT_JOB_SUCCESS = "EDIT_JOB_SUCCESS";
+export const TOGGLE_EDIT = "TOGGLE_EDIT";

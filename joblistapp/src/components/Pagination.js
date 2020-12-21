@@ -1,19 +1,19 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadJobs } from '../actions'
+import { loadJobsRequest } from '../actions'
 
 export default function Pagination() {
     const { page, totalPage, status } = useSelector(state => state.jobLists)
     const dispatch = useDispatch()
 
     const handleNext = () => {
-        dispatch(loadJobs(page + 1, status))
+        dispatch(loadJobsRequest(page + 1, status))
     }
     const handlePrev = () => {
-        dispatch(loadJobs(page - 1, status))
+        dispatch(loadJobsRequest(page - 1, status))
     }
     const changPage = (currentPage) => {
-        dispatch(loadJobs(currentPage, status))
+        dispatch(loadJobsRequest(currentPage, status))
     }
 
     let iterator = []
