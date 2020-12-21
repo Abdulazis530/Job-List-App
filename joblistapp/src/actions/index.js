@@ -118,3 +118,5 @@ export const editJob = (id, values) => {
         })
     }
 }
+
+export const togleEdit = (id) => ({ type: TOGGLE_EDIT, id })

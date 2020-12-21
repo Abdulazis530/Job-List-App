@@ -40,7 +40,7 @@ const jobLists = (state = { jobs: [], loading: false, page: 1, offset: 0, status
                 ...state,
                 jobs: state.jobs.map(job => {
                     if (job.id === action.id) {
-                        job.isEdit = true
+                        job.isEdit = !job.isEdit
                     }
                     return job
                 })

@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 import trashIcon from '../assets/icons/trash.svg'
 import editIcon from '../assets/icons/edit.svg'
 import Button from './Button'
-import { deleteJob } from '../actions'
+import { deleteJob, togleEdit } from '../actions'
 
 export default function JobItem(props) {
     const dispatch = useDispatch()
@@ -29,7 +29,7 @@ export default function JobItem(props) {
         })
     }
     const handleEdit = (id) => {
-        dispatch({ type: "TOGGLE_EDIT", id })
+        dispatch(togleEdit(id))
     }
     return (
         <tr>

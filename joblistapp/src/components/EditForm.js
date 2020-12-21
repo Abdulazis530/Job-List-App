@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import useForm from '../hooks/useForm'
 import validate from "../utils/validate"
-import { editJob } from '../actions'
+import { editJob, togleEdit } from '../actions'
 import Swal from 'sweetalert2'
 import cancelIcon from '../assets/icons/cancel.svg'
 import saveIcon from '../assets/icons/save.svg'
@@ -62,6 +62,7 @@ export default function EditForm(props) {
                         placeholder="Edit status"
                         className={`input input-edit ${errorValues.status && "error"}`}
                         value={values.status}
+                        type="text"
                     />
                 </div>
 
@@ -78,17 +79,17 @@ export default function EditForm(props) {
                 </div>
             </td>
             <td className="table__action">
-                <Button className="btn__delete">
+                <Button className="btn__delete" onClick={() => dispatch(togleEdit(id))}>
                     <img src={cancelIcon} alt="trash icon" width="15px" height="15px" />
                     <span>Cancel</span>
                 </Button>
 
-                <Button className="btn__edit" onClick={() => { alert("click") }}>
+                <Button className="btn__primary">
                     <img src={saveIcon} alt="edit icon" width="15px" height="15px" />
                     <span>Save</span>
                 </Button>
 
             </td>
-        </tr>
+        </tr >
     )
 }
