@@ -4,8 +4,8 @@ import useForm from '../hooks/useForm'
 import validate from "../utils/validate"
 import { editJob } from '../actions'
 import Swal from 'sweetalert2'
-import trashIcon from '../assets/icons/trash.svg'
-import editIcon from '../assets/icons/edit.svg'
+import cancelIcon from '../assets/icons/cancel.svg'
+import saveIcon from '../assets/icons/save.svg'
 import Button from './Button'
 
 export default function EditForm(props) {
@@ -79,13 +79,13 @@ export default function EditForm(props) {
             </td>
             <td className="table__action">
                 <Button className="btn__delete">
-                    <img src={trashIcon} alt="trash icon" width="15px" height="15px" />
-                    <span> Delete</span>
+                    <img src={cancelIcon} alt="trash icon" width="15px" height="15px" />
+                    <span>Cancel</span>
                 </Button>
 
                 <Button className="btn__edit" onClick={() => { alert("click") }}>
-                    <img src={editIcon} alt="edit icon" width="15px" height="15px" />
-                    <span> Edit</span>
+                    <img src={saveIcon} alt="edit icon" width="15px" height="15px" />
+                    <span>Save</span>
                 </Button>
 
             </td>
