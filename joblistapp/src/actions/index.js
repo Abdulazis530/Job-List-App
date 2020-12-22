@@ -10,15 +10,15 @@ import {
     TOGGLE_EDIT
 } from '../constant'
 
-const loadJobs = (offset, status) => ({
+const loadJobs = (offset, status, page) => ({
     type: LOAD_JOBS,
     offset,
-    status
+    status,
+    page
 })
-const loadJobSuccess = (jobs, page, totalPage) => ({
+const loadJobSuccess = (jobs, totalPage) => ({
     type: LOAD_JOBS_SUCCESS,
     jobs,
-    page,
     totalPage
 
 })
@@ -32,19 +32,20 @@ export const loadJobsRequest = (page, status = "ALL") => {
         const LIMIT = 5
         const offset = (page - 1) * LIMIT
 
-        dispatch(loadJobs(offset, status))
+        dispatch(loadJobs(offset, status, page))
         setTimeout(() => {
             let jobs
             let totalPage
             if (status !== "ALL") {
                 let filteredData = storageData.filter(job => job.status === status)
-                totalPage = filteredData.length
+                totalPage = Math.ceil(filteredData.length / LIMIT)
                 jobs = filteredData.splice(offset, LIMIT)
             } else {
                 totalPage = Math.ceil(storageData.length / LIMIT)
+
                 jobs = storageData.splice(offset, LIMIT)
             }
-            dispatch(loadJobSuccess(jobs, page, totalPage))
+            dispatch(loadJobSuccess(jobs, totalPage))
         }, 500)
 
     }

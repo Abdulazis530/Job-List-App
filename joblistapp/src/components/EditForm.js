@@ -88,8 +88,7 @@ export default function EditForm(props) {
                     <img src={saveIcon} alt="edit icon" width="15px" height="15px" />
                     <span>Save</span>
                 </Button>
-
             </td>
-        </tr >
+        </tr>
     )
 }

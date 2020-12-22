@@ -15,13 +15,13 @@ const jobLists = (state = { jobs: [], loading: false, page: 1, offset: 0, status
                 ...state,
                 loading: true,
                 offset: action.offset,
-                status: action.status
+                status: action.status,
+                page: action.page
             }
         case LOAD_JOBS_SUCCESS:
             return {
                 ...state,
                 jobs: action.jobs,
-                page: action.page,
                 loading: false,
                 totalPage: action.totalPage,
             }

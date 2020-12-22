@@ -4,10 +4,10 @@ import { loadJobsRequest } from '../actions'
 
 export default function Status() {
     const dispatch = useDispatch()
-    const { status, page } = useSelector(state => state.jobLists)
+    const { status } = useSelector(state => state.jobLists)
 
     const handleChangeStatus = (newStatus) => {
-        dispatch(loadJobsRequest(page, newStatus))
+        dispatch(loadJobsRequest(1, newStatus))
     }
 
 
