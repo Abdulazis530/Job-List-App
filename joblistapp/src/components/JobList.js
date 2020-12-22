@@ -32,7 +32,7 @@ export default function JobList() {
                     jobs.map((job, index) => (
                         job.isEdit ?
                             <EditForm
-                                key={job.id}
+                                key={`edit-${job.id}`}
                                 num={offset + index + 1}
                                 company={job.company}
                                 position={job.position}
@@ -42,7 +42,7 @@ export default function JobList() {
                             />
                             :
                             <JobItem
-                                key={job.id}
+                                key={`list-${job.id}`}
                                 num={offset + index + 1}
                                 company={job.company}
                                 position={job.position}

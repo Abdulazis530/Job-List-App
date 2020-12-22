@@ -19,7 +19,7 @@ export default function EditForm(props) {
             text: "This job will be updated !",
             type: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#d33',
+            confirmButtonColor: '#0B66C2',
             cancelButtonColor: '#08db93',
             confirmButtonText: 'Yes, update it!',
             cancelButtonText: 'No!',
@@ -49,7 +49,7 @@ export default function EditForm(props) {
             <td>
                 <div className="form-row edit">
                     <input
-                        name="positon"
+                        name="position"
                         placeholder="Edit position"
                         className={`input input-edit ${errorValues.position && "error"}`}
                         value={values.position}

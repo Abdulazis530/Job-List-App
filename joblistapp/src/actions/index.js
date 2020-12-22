@@ -106,12 +106,16 @@ export const editJob = (id, values) => {
         console.log(id)
         console.log(values)
         const storageData = JSON.parse(localStorage.getItem("jobs")) || []
-        storageData.forEach(job => {
+        const editedData = storageData.map(job => {
+
             if (job.id === id) {
-                job = { ...values }
+                console.log("here")
+                job = values
             }
+            return job
         })
-        localStorage.setItem("jobs", JSON.stringify(storageData))
+        localStorage.setItem("jobs", JSON.stringify(editedData))
+        console.log(storageData)
 
         dispatch(editJobSuccess(id, values))
         Swal.fire({
