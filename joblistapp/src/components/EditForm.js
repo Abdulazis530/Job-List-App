@@ -59,14 +59,13 @@ export default function EditForm(props) {
             </td>
             <td>
                 <div className="form-row edit">
-                    <input
-                        name="status"
-                        placeholder="Edit status"
-                        className={`input input-edit ${errorValues.status && "error"}`}
-                        value={values.status}
-                        type="text"
-                        onChange={handleChange}
-                    />
+                    <select name="status" onChange={handleChange} className={`input input-edit ${errorValues.status && "error"}`}>
+                        <option value={values.status}>{values.status}</option>
+                        <option value="APLIED">APLIED</option>
+                        <option value="INTERVIEW">INTERVIEW</option>
+                        <option value="REJECTED">REJECTED</option>
+                    </select>
+
                 </div>
 
             </td>
