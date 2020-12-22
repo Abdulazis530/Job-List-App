@@ -17,6 +17,7 @@ export default function useForm(validate, callback, objValue) {
     const handleSubmit = e => {
         e.preventDefault();
         setErrorvalues(validate(values))
+        console.log("here")
         setSubmit(true)
     }
 

@@ -9,7 +9,7 @@ import { deleteJob, togleEdit } from '../actions'
 
 export default function JobItem(props) {
     const dispatch = useDispatch()
-    const { jobs, page, status } = useSelector(state => state.jobLists)
+    const { jobs, page, status } = useSelector(state => state.jobs)
     const { num, company, position, date, statusJob, id } = props
 
     const handleDelete = (id) => {

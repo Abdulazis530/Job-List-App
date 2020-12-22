@@ -6,7 +6,7 @@ import EditForm from './EditForm'
 import { loadJobsRequest } from '../actions'
 import Spinner from "./Spinner"
 export default function JobList() {
-    const { jobs, page, offset, status, loading } = useSelector(state => state.jobLists)
+    const { jobs, page, offset, status, loading } = useSelector(state => state.jobs)
     const dispatch = useDispatch()
 
     useEffect(() => {

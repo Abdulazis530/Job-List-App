@@ -8,7 +8,7 @@ import {
     TOGGLE_EDIT
 } from '../constant'
 
-const jobLists = (state = { jobs: [], loading: false, page: 1, offset: 0, status: "ALL", totalPage: null }, action) => {
+const jobReducer = (state = { jobs: [], loading: false, page: 1, offset: 0, status: "ALL", totalPage: null }, action) => {
     switch (action.type) {
         case LOAD_JOBS:
             return {
@@ -61,4 +61,4 @@ const jobLists = (state = { jobs: [], loading: false, page: 1, offset: 0, status
 
 }
 
-export default jobLists
+export default jobReducer

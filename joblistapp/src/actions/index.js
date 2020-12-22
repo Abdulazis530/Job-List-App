@@ -103,6 +103,8 @@ const editJobSuccess = (id, values) => ({
 
 export const editJob = (id, values) => {
     return dispatch => {
+        console.log(id)
+        console.log(values)
         const storageData = JSON.parse(localStorage.getItem("jobs")) || []
         storageData.forEach(job => {
             if (job.id === id) {

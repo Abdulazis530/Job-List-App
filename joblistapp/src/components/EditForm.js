@@ -21,7 +21,7 @@ export default function EditForm(props) {
             showCancelButton: true,
             confirmButtonColor: '#d33',
             cancelButtonColor: '#08db93',
-            confirmButtonText: 'Yes, delete it!',
+            confirmButtonText: 'Yes, update it!',
             cancelButtonText: 'No!',
         }).then(result => {
             if (result.value) {
@@ -42,6 +42,7 @@ export default function EditForm(props) {
                         placeholder="Edit company"
                         className={`input input-edit ${errorValues.company && "error"}`}
                         value={values.company}
+                        onChange={handleChange}
                     />
                 </div>
             </td>
@@ -52,6 +53,7 @@ export default function EditForm(props) {
                         placeholder="Edit position"
                         className={`input input-edit ${errorValues.position && "error"}`}
                         value={values.position}
+                        onChange={handleChange}
                     />
                 </div>
             </td>
@@ -63,6 +65,7 @@ export default function EditForm(props) {
                         className={`input input-edit ${errorValues.status && "error"}`}
                         value={values.status}
                         type="text"
+                        onChange={handleChange}
                     />
                 </div>
 
@@ -84,7 +87,7 @@ export default function EditForm(props) {
                     <span>Cancel</span>
                 </Button>
 
-                <Button className="btn__primary">
+                <Button className="btn__primary" onClick={handleSubmit}>
                     <img src={saveIcon} alt="edit icon" width="15px" height="15px" />
                     <span>Save</span>
                 </Button>

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadJobsRequest } from '../actions'
 
 export default function Pagination() {
-    const { page, totalPage, status } = useSelector(state => state.jobLists)
+    const { page, totalPage, status } = useSelector(state => state.jobs)
     const dispatch = useDispatch()
 
     const handleNext = () => {

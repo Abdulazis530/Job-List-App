@@ -9,7 +9,7 @@ import Swal from 'sweetalert2'
 
 export default function Form({ onClose }) {
     const [loading, setLoading] = useState(false)
-    const { page, jobs, status } = useSelector(state => state.jobLists)
+    const { page, jobs, status } = useSelector(state => state.jobs)
     const dispatch = useDispatch()
     const objValue = { company: "", position: "", date: "" }
     const submit = () => {
