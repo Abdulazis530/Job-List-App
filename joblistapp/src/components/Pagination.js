@@ -19,6 +19,7 @@ export default function Pagination() {
     let iterator = []
     for (let index = 0; index < totalPage; index++) {
         iterator.push(index)
+        console.log(iterator.length)
 
     }
     return (

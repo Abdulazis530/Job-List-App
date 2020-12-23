@@ -131,14 +131,7 @@ export const searchJobAction = (filter) => {
     return dispatch => {
         const storageData = JSON.parse(localStorage.getItem("jobs")) || []
         const filteredJob = storageData.filter(job => job.company === filter)
-        if (filteredJob.length === 0 || storageData.length === 0) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Job not found',
-                showConfirmationButton: false,
-            })
-        } else {
-            dispatch(searchJob(filteredJob))
-        }
+        dispatch(searchJob(filteredJob))
+
     }
 }

@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { searchJobAction } from '../actions'
 import searchIcon from "../assets/icons/icon-search.svg"
 
 
 export default function SearchBox() {
     const [filter, setFilter] = useState("")
+    const dispatch = useDispatch()
+
     useEffect(() => {
-        console.log(filter)
+        if (filter) dispatch(searchJobAction(filter))
     }, [filter])
     const handleChange = (e) => {
-        const { name, value } = e.target
-        setFilter(value)
+        setFilter(e.target.value)
     }
 
     return (

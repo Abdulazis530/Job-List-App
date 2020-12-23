@@ -59,7 +59,10 @@ const jobReducer = (state = { jobs: [], loading: false, page: 1, offset: 0, stat
         case SEARCH_JOB:
             return {
                 ...state,
-                jobs: action.filteredJob
+                jobs: action.filteredJob,
+                page: 1,
+                totalPage: 1,
+                status: "FILTER"
             }
         default:
             return state
