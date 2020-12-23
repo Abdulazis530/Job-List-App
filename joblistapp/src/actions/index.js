@@ -7,7 +7,8 @@ import {
     ADD_JOB_SUCCESS,
     DELETE_ID_SUCCESS,
     EDIT_JOB_SUCCESS,
-    TOGGLE_EDIT
+    TOGGLE_EDIT,
+    SEARCH_JOB
 } from '../constant'
 
 const loadJobs = (offset, status, page) => ({
@@ -103,20 +104,14 @@ const editJobSuccess = (id, values) => ({
 
 export const editJob = (id, values) => {
     return dispatch => {
-        console.log(id)
-        console.log(values)
         const storageData = JSON.parse(localStorage.getItem("jobs")) || []
         const editedData = storageData.map(job => {
-
             if (job.id === id) {
-                console.log("here")
                 job = values
             }
             return job
         })
         localStorage.setItem("jobs", JSON.stringify(editedData))
-        console.log(storageData)
-
         dispatch(editJobSuccess(id, values))
         Swal.fire({
             icon: 'success',
@@ -127,3 +122,23 @@ export const editJob = (id, values) => {
 }
 
 export const togleEdit = (id) => ({ type: TOGGLE_EDIT, id })
+
+export const searchJob = (filteredJob) => ({
+    type: SEARCH_JOB,
+    filteredJob
+})
+export const searchJobAction = (filter) => {
+    return dispatch => {
+        const storageData = JSON.parse(localStorage.getItem("jobs")) || []
+        const filteredJob = storageData.filter(job => job.company === filter)
+        if (filteredJob.length === 0 || storageData.length === 0) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Job not found',
+                showConfirmationButton: false,
+            })
+        } else {
+            dispatch(searchJob(filteredJob))
+        }
+    }
+}

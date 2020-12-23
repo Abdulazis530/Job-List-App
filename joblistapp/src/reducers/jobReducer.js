@@ -5,7 +5,8 @@ import {
     ADD_JOB_SUCCESS,
     DELETE_ID_SUCCESS,
     EDIT_JOB_SUCCESS,
-    TOGGLE_EDIT
+    TOGGLE_EDIT,
+    SEARCH_JOB
 } from '../constant'
 
 const jobReducer = (state = { jobs: [], loading: false, page: 1, offset: 0, status: "ALL", totalPage: null }, action) => {
@@ -54,6 +55,11 @@ const jobReducer = (state = { jobs: [], loading: false, page: 1, offset: 0, stat
                     }
                     return job
                 })
+            }
+        case SEARCH_JOB:
+            return {
+                ...state,
+                jobs: action.filteredJob
             }
         default:
             return state

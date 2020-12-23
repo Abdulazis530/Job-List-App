@@ -4,3 +4,4 @@ export const ADD_JOB_SUCCESS = "ADD_JOB_SUCCESS";
 export const DELETE_ID_SUCCESS = "DELETE_ID_SUCCESS"
 export const EDIT_JOB_SUCCESS = "EDIT_JOB_SUCCESS";
 export const TOGGLE_EDIT = "TOGGLE_EDIT";
+export const SEARCH_JOB = "SEARCH_JOB"
